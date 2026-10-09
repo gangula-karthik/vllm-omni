@@ -2131,6 +2131,14 @@ class OmniGPUModelRunner(PrefixCacheRunnerMixin, GPUModelRunner):
     ):
         """Inject omni-specific kwargs into forward and cache model output"""
         model_kwargs_extra = self._build_model_kwargs_extra()
+        if getattr(self.model, "accepts_logits_row_req_ids", False):
+            # compute_logits receives one hidden-state row per scheduled
+            # request, in persistent-batch order (unscheduled requests are
+            # removed from the batch before execution). Models whose
+            # per-request gen state must force specific rows (e.g.
+            # LongCat-Next audio/visual gen) read this stash to map rows to
+            # requests even when gen and plain-text requests share a step.
+            self.model._logits_row_req_ids = list(self.input_batch.req_ids)
         update_decode_metadata = getattr(self.model, "update_decode_step_metadata", None)
         if getattr(self.model, "supports_omni_decode_step_metadata", False) and callable(update_decode_metadata):
             cpu_input_tail_ids = None

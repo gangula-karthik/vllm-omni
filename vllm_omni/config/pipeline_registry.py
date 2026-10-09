@@ -202,6 +202,21 @@ OMNI_PIPELINES: dict[str, PipelineConfig | PipelineResolverFunc] = {
     "nemotron_labs_voicechat": NEMOTRON_VOICECHAT_PIPELINE,
     "nemotron_voicechat": NEMOTRON_VOICECHAT_PIPELINE,
     "omnivoice": OMNIVOICE_PIPELINE,
+    "personaplex": PERSONAPLEX_PIPELINE,
+    "pi0": PI0_PIPELINE,
+    "pi05": PI05_PIPELINE,
+    "qwen2_5_omni": QWEN2_5_OMNI_PIPELINE,
+    "qwen2_5_omni_thinker_only": QWEN2_5_OMNI_THINKER_ONLY_PIPELINE,
+    "qwen3_omni_moe": resolve_qwen3_omni_pipeline,
+    "qwen3_omni_moe_thinker_only": QWEN3_OMNI_THINKER_ONLY_PIPELINE,
+    "qwen3_tts": QWEN3_TTS_PIPELINE,
+    "qwen3_tts_fused": QWEN3_TTS_FUSED_PIPELINE,
+    "step_audio_2": STEP_AUDIO2_PIPELINE,
+    "step_audio_2_asr": STEP_AUDIO2_ASR_PIPELINE,
+    "voxcpm2": VOXCPM2_PIPELINE,
+    "voxtral_tts": VOXTRAL_TTS_PIPELINE,
+    "wan2_2_ti2v": WAN2_2_TI2V_PIPELINE,
+    "yue2": YUE2_PIPELINE,
 }
 
 
